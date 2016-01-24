@@ -1,0 +1,172 @@
+//COE12B020 O.S.S.KRISHNA TEJA
+//EDM12B028 SOUMYA S VASTRAD
+//COE12B011 K.GOUTHAMI
+
+
+
+int boardLED = 13;
+int leftSignal = 9;                
+int rightSignal = 11;
+int signalLow = 10;
+int rightLow = 4;
+int leftSwitch = 6;
+int rightSwitch = 12;
+int x, y;
+int mode = 0;
+int DAY = 0;
+int NIGHT = 1;
+
+void setup()                    // run once, when the sketch starts
+{
+  pinMode(boardLED, OUTPUT);
+  
+  pinMode(leftSignal, OUTPUT);
+  pinMode(rightSignal, OUTPUT); 
+  
+  pinMode(signalLow, OUTPUT);  
+  pinMode(rightLow, OUTPUT);  
+  
+  pinMode(leftSwitch, INPUT);  
+  digitalWrite(leftSwitch, HIGH);
+  pinMode(rightSwitch, INPUT);  
+  digitalWrite(rightSwitch, HIGH);
+  digitalWrite(boardLED, HIGH);
+  digitalWrite(signalLow, LOW);
+  digitalWrite(rightLow, LOW);
+}
+
+void loop()                     // run over and over again
+{ 
+  checkLeft();
+  checkRight();
+  if (mode == NIGHT)
+    night();  
+  else  
+    day();
+}
+
+void checkLeft()
+{
+  if (digitalRead(leftSwitch) == LOW)
+  {
+    digitalWrite(boardLED, LOW);
+    while (digitalRead(leftSwitch) == LOW)
+    {
+      if (digitalRead(rightSwitch) == LOW)
+      {
+        while (digitalRead(rightSwitch) == LOW | digitalRead(leftSwitch) == LOW);
+        mode = 1-mode;
+        digitalWrite(boardLED, HIGH);
+        return;
+      }
+    }
+    leftTurn();
+  }
+}
+
+void checkRight()
+{
+  if (digitalRead(rightSwitch) == LOW)
+  {
+    digitalWrite(boardLED, LOW);
+    while (digitalRead(rightSwitch) == LOW)
+    {
+      if (digitalRead(leftSwitch) == LOW)
+      {
+         while (digitalRead(leftSwitch) == LOW | digitalRead(rightSwitch) == LOW);
+         mode = 1-mode;
+         digitalWrite(boardLED, HIGH);
+         return;
+      }
+    }
+    rightTurn();
+  }
+}
+
+void leftTurn()
+{
+  for (x=0;x<10;x++)
+  {
+    digitalWrite(leftSignal, HIGH); 
+    for(y=0;y<10;y++)
+    {
+      delay(30);
+      if (digitalRead(leftSwitch) == LOW)
+      {
+        while (digitalRead(leftSwitch) == LOW);
+        digitalWrite(leftSignal, LOW);  
+       
+        return;
+      }
+    }
+    digitalWrite(leftSignal, LOW);
+    
+    for(y=0;y<10;y++)
+    {
+      delay(30);
+      if (digitalRead(leftSwitch) == LOW)
+      {
+        while (digitalRead(leftSwitch) == LOW);
+        digitalWrite(leftSignal, LOW);  
+        
+        return;
+      }
+    }
+    
+  }
+}
+
+void rightTurn()
+{
+  for (x=0;x<10;x++)
+  {
+    digitalWrite(rightSignal, HIGH); 
+    for(y=0;y<10;y++)
+    {
+      delay(30);
+      if (digitalRead(rightSwitch) == LOW)
+      {
+        while (digitalRead(rightSwitch) == LOW);
+        digitalWrite(rightSignal, LOW);  
+       
+        return;
+      }
+    }
+    digitalWrite(rightSignal, LOW); 
+  
+    for(y=0;y<10;y++)
+    {
+      delay(30);
+      if (digitalRead(rightSwitch) == LOW)
+      {
+        while (digitalRead(rightSwitch) == LOW);
+        digitalWrite(rightSignal, LOW);  
+        
+        return;
+      }
+    }
+   
+  }
+}
+
+void night()
+{
+  digitalWrite(boardLED, LOW); 
+  
+  digitalWrite(rightSignal, HIGH); 
+  digitalWrite(leftSignal, HIGH);  
+ 
+  delay(100);
+  digitalWrite(rightSignal, LOW);  
+  digitalWrite(leftSignal, LOW);
+ 
+}
+
+void day()
+{
+  
+  digitalWrite(boardLED, HIGH); 
+  delay(1);
+  digitalWrite(boardLED, LOW); 
+  
+}

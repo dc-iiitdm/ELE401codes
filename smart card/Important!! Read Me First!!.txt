@@ -1,0 +1,3 @@
+The final submitted project is done with TM4C123G and the report and video of the same are uploaded here.
+
+However, the code used during rapid prototyping of the project with 8051 microcontroller is submitted. Datasheets and circuit diagrams therefore are also submitted for the same. 

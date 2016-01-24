@@ -1,0 +1,16 @@
+Giridharan, Rangu Gautam, Nithin Shamsudin
+
+Our project is Electrodrum, a percussion MIDI instrument designed to meet the needs of a musician.
+
+Components Used:
+Tiva launchpad
+Nokia LCD display
+Acrylic Board
+Piezo Sensors
+Connected wires.
+PC
+
+Software used:
+Ableton Live 
+Hairless MIDI
+LoopBe1

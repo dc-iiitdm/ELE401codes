@@ -1,0 +1,25 @@
+PROJECT TITLE             : Voice Controlled Room (VCR)
+
+TEAM Members              : A.V.S.SAI BHARGAV KUMAR(EDM12B007)
+                            D.NAVEEN BABU(EDM12B009)
+                            S.BALASUBRAMANYAM(COE12B026)
+
+COMPONENTS USED           : BLUETOOTH MODULE(HC06), MOTORS, RELAYS, MOTOR DRIVERS, MICROPHONE, ARDUINO UNO, TM4C123.
+
+
+SOFTWARE PLATFORMS USED   : BITVOICER, ENERGIA.
+
+PROJECT DESCRIPTION       : To design a speech activated system that can manage certain room service calls and 
+                            appliance control through voice commands.
+                            This commands are given using microphone of the computer and Bitvoicer software.
+                            And using an app that uses the google voice search to recognize the voice and these are transmitted 
+                            via bluetooth and are received using bluetooth module.                
+
+
+FILES DESCRIPTION         : Videos  ---> This folder contains the final product videos.
+                             
+                            Images  ---> This folder contain the images regarding the project.
+
+                            Code    ---> This contains the codes whose description is given in codes folder.
+                                 
+                            Apps    ---> This contains the apk files for the app that was created in app-inventer. 

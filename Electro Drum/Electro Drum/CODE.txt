@@ -1,0 +1,67 @@
+// This is the final code for Electro Drum.
+// GIRIDHARAN,RANGU GOUTHAM, NITHIN SHAMSUDIN
+
+#include<string.h>
+#include<SPI.h>
+#include "LCD_5110_SPI.h"
+
+
+#if defined(__MSP430Ga2553__)
+LCD_5110_SPI myScreen;
+#elif defined(__LM4F120H5QR__)
+LCD_5110_SPI myScreen(PA_7, PA_2, PB_5, PA_6, PUSH2);
+#endif
+boolean	backlight = false;
+uint8_t k = 0;
+
+int pin[12]={A0,A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,A11};
+int pdata[12]={1,1,1,1,  1,1,1,1,  1,1,1,1};
+const int buttonPin = PUSH2; 
+
+void MIDImessage(byte command, byte data1, byte data2) 
+{
+   Serial.write(command);
+   Serial.write(data1);
+   Serial.write(data2);
+}
+
+void setup()
+{
+  Serial.begin(9600); 
+  pinMode(buttonPin, INPUT_PULLUP);
+    SPI.begin();
+    SPI.setClockDivider(SPI_CLOCK_DIV2);
+    SPI.setBitOrder(MSBFIRST);
+   SPI.setDataMode(SPI_MODE0);
+    
+    myScreen.begin();
+    
+    myScreen.text(4,0, "Hello!");
+    myScreen.text(3,2, "This is ");
+    myScreen.text(0,3, "Electro-Drum ");
+    digitalWrite(PA_6,LOW);
+   for(int i=0;i<3;i++) 
+    {
+      myScreen.text(1,5, "            ");
+      delay(250);
+      myScreen.text(1,5, "Lets Play!!!");
+      delay(750);
+       
+    }
+}
+
+void loop()
+{
+  int i=1,threshold=0;
+ char c[2];
+ 
+
+  for(int i=0;i<9;i++)
+  {
+  int ADCvalue=analogRead(pin[i]);
+  if(ADCvalue<=threshold)
+       MIDImessage(176,i,100);   delay(1500);
+  }
+  delay(1);
+}
+
