@@ -1,0 +1,30 @@
+Project Name: Beginner's Electronic Kit- A cost effective alternative to NI Elvis.
+
+Team : Aaquila Arul Arzela (EDM12B001)
+       Allu Asha Kumari (EDM12B003)
+       Ambatti Pravallika (EDM12B004)
+
+Idea : Beginner's Electronic kit is a cost effective alternative to NI Elvis implemented using 
+       TM4C launchpad kit/ in arduino uno board. It has an oscilloscope, function generator(sine, 
+       square, triangle, DC with amplitude, frequency variation), ultrasonic sensor, temperature 
+       humidity sensor, ldr-led circuit, hex display, relay-led-switch circuit, piezzo-buzzer circuit, 
+       connectors, resistors, capacitors, power supply and bread board. We have used processing IDE as 
+       the graphical interface.
+
+Components used: Arduino uno board
+                 TM4C launch pad kit
+                 HC-SR04
+                 Relay
+                 Temperature humidity sensor      
+                 Piezzo sensor
+                 Buzzer
+                 Ldr
+                 Seven segment hex display
+                 Processing IDE
+                 Arduino IDE
+                 Energia
+
+File details:    HC-SR04-  Ultrasonic sensor ping and code.
+                 TEMPSENS - Code for temperature-humidity sensor
+                 Oscilloscope1ch-arduino- Code for two channel oscilloscope
+                 Oscilloscope1ch-processing-Code to plot the socilloscope outputs

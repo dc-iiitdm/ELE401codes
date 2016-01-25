@@ -1,0 +1,16 @@
+// AARTHY SUNDARAM (EDM12B002), KAVIYA.R (EDM12B015)
+// The user sees this webpage upon accessing the ip address of the pi through the smartphone. 
+$def with (form, title)
+<!doctype html>
+<html>
+	<head>
+		<title>$title</title>
+		<link rel="stylesheet" typer="text/css" href='/static/styles.css>
+	</head>
+	<body>
+		<br />
+		<form class="form" methid="post">
+		$:form.render()
+		</form>
+	</body>
+</html>
